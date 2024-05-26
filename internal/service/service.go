@@ -1,8 +1,21 @@
 package service
 
-type Service struct {
+import (
+	"MoneyMinder/internal/dtos"
+	"MoneyMinder/internal/repository"
+)
+
+type Records interface {
+	GetProfitRecords() ([]*dtos.RecordOutput, error)
+	GetExpenseRecords() ([]*dtos.RecordOutput, error)
+	AddRecord(inputBody dtos.RecordInput) error
+	UpdateRecord(recordId int, updateBody dtos.RecordInput) error
 }
 
-func NewService() *Service {
-	return &Service{}
+type Service struct {
+	Records
+}
+
+func NewService(repository *repository.Repository) *Service {
+	return &Service{Records: NewRecordService(repository.Records)}
 }
