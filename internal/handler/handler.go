@@ -23,7 +23,17 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			records.GET("/profits", h.GetProfits)
 			records.GET("/expenses", h.GetExpences)
 			records.POST("/", h.PostRecord)
-			records.PUT("/", h.PutRecord)
+			records.PUT("/:id", h.PutRecord)
+		}
+
+		goals := api.Group("/goals")
+		{
+			goals.GET("/", h.GetGoals)
+			goals.GET("/:id", h.GetGoal)
+			goals.POST("/", h.CreateGoal)
+			goals.PUT("/:id", h.UpdateGoal)
+			goals.PUT("/:id", h.UpdateGoal)
+			goals.DELETE("/:id", h.RemoveGoal)
 		}
 	}
 
