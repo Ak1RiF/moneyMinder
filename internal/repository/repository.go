@@ -12,12 +12,22 @@ type Records interface {
 	Update(id int, entity models.Record) error
 }
 
+type Goals interface {
+	Get() ([]*models.Goal, error)
+	GetById(id int) (*models.Goal, error)
+	Create(goal models.Goal) error
+	Update(goal models.Goal) error
+	Delete(id int) error
+}
+
 type Repository struct {
 	Records
+	Goals
 }
 
 func NewRepository(db *pgx.Conn) *Repository {
 	return &Repository{
 		Records: NewRecordRepository(db),
+		Goals:   NewGoalRepository(db),
 	}
 }
