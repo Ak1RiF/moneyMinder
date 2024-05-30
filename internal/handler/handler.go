@@ -32,7 +32,6 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			goals.GET("/:id", h.GetGoal)
 			goals.POST("/", h.CreateGoal)
 			goals.PUT("/:id", h.UpdateGoal)
-			goals.PUT("/:id", h.UpdateGoal)
 			goals.DELETE("/:id", h.RemoveGoal)
 		}
 	}

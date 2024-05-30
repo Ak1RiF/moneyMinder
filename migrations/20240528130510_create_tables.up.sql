@@ -3,7 +3,7 @@ CREATE TABLE records(
     name VARCHAR(255) NOT NULL,
     type VARCHAR(255) NOT NULL,
     amount FLOAT NOT NULL,
-    description TEXT DEFAULT ""
+    description TEXT
 );
 
 CREATE TABLE goals(
@@ -11,6 +11,6 @@ CREATE TABLE goals(
     title VARCHAR(255) NOT NULL,
     amount FLOAT NOT NULL,
     total_contributed FLOAT DEFAULT 0,
-    date_create VATCHAR(255) NOT NULL,
-    date_completion VATCHAR(255) NOT NULL
+    date_create VARCHAR(255) NOT NULL,
+    date_completion VARCHAR(255) NOT NULL
 );
